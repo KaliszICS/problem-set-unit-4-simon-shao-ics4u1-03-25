@@ -25,6 +25,9 @@ public class DiscardPile{
 
     //addCard
     public void addCard (Card card){
+        if (card==null){
+            return;
+        }
         Card[] tempPile = new Card[this.size()+1];
         
         for (int index = 0; index<this.size(); index++){

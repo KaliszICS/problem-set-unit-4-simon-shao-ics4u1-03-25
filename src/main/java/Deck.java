@@ -37,6 +37,9 @@ public class Deck{
     }
 
     public Card draw(){
+        if (this.size()==0){
+            return null;
+        }
         Card top = this.deck[0];
         if (this.size() == 0){
             return null;
@@ -91,7 +94,7 @@ public class Deck{
         }
         
         Card[] tempDeck = new Card[this.deck.length+1];
-        
+
         for (int index = 0; index<this.size(); index++){
             //copies all cards to temp, leaving top card (0) empty
             tempDeck[index + 1] = this.deck[index];
