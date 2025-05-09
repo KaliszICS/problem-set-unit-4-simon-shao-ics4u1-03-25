@@ -1,49 +1,66 @@
 /**
- * contains a deck of cards
+ * contains a deck of cards which can be editted and shuffled
+ * @author Simon Shao
+ * @version 1.0.0
  */
-
-import java.util.HashMap;
 import java.util.Random;
 
 public class Deck{
 
     private Card[] deck;
+    private String[] suitType = new String[]{"Hearts", "Clubs", "Diamonds", "Spades"};
+    private String[] nameType = new String[]{"Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King"};
 
 
     //build
+    /**
+     * initialize deck as given
+     * @param deck the array of cards that is set as the deck. 
+     */
     public Deck(Card[] deck){
         this.deck = deck;
     }
 
+    /**
+     * default deck of 52 cards
+     * default name order of ace to king
+     * default suit order of hearts, clubs, diamonds, spades
+     * default value of each card as their name (ace is 1, jack, queen, king, is 11, 12, 13)
+     */
     public Deck(){
         int numberOfCards = 52;
         int index = 0;
-        String[] suitType = new String[]{"Hearts", "Clubs", "Diamonds", "Spades"};
-        String[] nameType = new String[]{"Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King"};
         this.deck = new Card[numberOfCards];
 
         //set suit
-        for (int curSuit = 0; curSuit<suitType.length; curSuit++){
+        for (int curSuit = 0; curSuit<this.suitType.length; curSuit++){
             //set name
-            for (int nameValue = 0; nameValue<nameType.length; nameValue++){
-                this.deck[index] = new Card(nameType[nameValue], suitType[curSuit], nameValue);
+            for (int nameIndex = 0; nameIndex<this.nameType.length; nameIndex++){
+                //nameIndex +1 represents the value of the names
+                this.deck[index] = new Card(this.nameType[nameIndex], this.suitType[curSuit], nameIndex+1);
                 index++;
             }
         }
     }
     
+    /**
+     * to access how many cards are in the deck
+     * @return returns the number of cards in the deck
+     */
     public int size(){
         return this.deck.length;
     }
 
+    /**
+     * draws a card from the top of deck (deck's size is reduced)
+     * the top of deck is the 0th index of the card array
+     * @return returns the card that was drawn
+     */
     public Card draw(){
         if (this.size()==0){
             return null;
         }
         Card top = this.deck[0];
-        if (this.size() == 0){
-            return null;
-        }
         Card[] tempDeck = new Card[this.deck.length-1];
         for (int index = 0; index<tempDeck.length; index++){
             //copies all cards except the first one to temp
@@ -60,6 +77,9 @@ public class Deck{
         return top;
     }
 
+    /**
+     * randomizes the order of cards in the deck
+     */
     public void shuffle(){
 
         Random random = new Random();
@@ -88,6 +108,12 @@ public class Deck{
         }
     }
 
+    //no add null
+    /**
+     * adds a card to the deck
+     * does not allow null cards to be added
+     * @param card the card that is to be added to the deck
+     */
     public void addCard(Card card){
         if(card==null){
             return;
@@ -111,6 +137,10 @@ public class Deck{
         }
     }
 
+    /**
+     * adds multiple cards in the form of a card array and reshuffles the deck after adding them
+     * @param cards the card array that is to be added to the deck
+     */
     public void reshuffle(Card[] cards){
         int deckSize = this.size() + cards.length;
 
@@ -121,7 +151,6 @@ public class Deck{
         }
         
         for (int index = 0; index<cards.length; index++){
-            //rewrite this later or rename the variables
             tempDeck[index+this.size()] = cards[index];
         }
 
