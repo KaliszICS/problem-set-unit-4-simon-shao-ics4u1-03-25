@@ -91,7 +91,6 @@ public class Player{
     }
 
 //discardCard
-//also can discard null in hand
     /**
      * removes a card from hand and adds it to the discard pile
      * null card can also be removed, but it won't be added to pile
