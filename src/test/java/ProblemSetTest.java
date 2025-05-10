@@ -311,6 +311,12 @@ public void playerReturnCard()
    assertEquals(card2, p.getHand()[0]);
    assertEquals(53, deck.size());
    assertEquals(card1, deck.draw());
+   cards = new Card[0];
+   deck = new Deck(cards);
+   cards = new Card[]{card, card1, card2};
+   p = new Player("s", 1, cards);
+   assertEquals(true, p.returnCard(card, deck));
+   assertEquals(card, deck.draw());
 }
 
 //toString
