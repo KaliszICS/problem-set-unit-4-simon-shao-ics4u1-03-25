@@ -205,7 +205,7 @@ public class ProblemSetTest {
    {
       Card card = new Card("A", "Hearts", 1);
       Card card1 = new Card("a", "", 0);
-      Card card2 = new Card("null", "Hearts", 1);
+      Card card2 = new Card(null, "Hearts", 1);
       Card[] cards = new Card[]{card, card1, card2};
       DiscardPile pile = new DiscardPile(cards);
       assertEquals("A of Hearts, a of , null of Hearts.", pile.toString());
