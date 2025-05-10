@@ -28,9 +28,8 @@ public class Deck{
      * default value of each card as their name (ace is 1, jack, queen, king, is 11, 12, 13)
      */
     public Deck(){
-        int numberOfCards = 52;
         int index = 0;
-        this.deck = new Card[numberOfCards];
+        this.deck = new Card[52];
 
         //set suit
         for (int curSuit = 0; curSuit<this.suitType.length; curSuit++){
