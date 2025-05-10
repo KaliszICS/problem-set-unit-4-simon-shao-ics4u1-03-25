@@ -291,6 +291,19 @@ public void playerDiscardCard()
 }
 
 @Test
+public void playerReturnCard2()
+{
+   Card card = new Card("Ace", "Hearts", 1);
+   Card card1 = new Card("a", "", 0);
+   Card card2 = new Card("", "Hearts", 1);
+   Card[] cards = new Card[]{card, card1, card2};
+   Deck deck = new Deck();
+   Player p = new Player("s", 1, cards);
+   assertEquals(true, p.returnCard(card2, deck));
+      assertEquals(true, p.returnCard(card1, deck));
+}
+
+@Test
 public void playerReturnCard()
 {
    Card card = new Card("Ace", "Hearts", 1);

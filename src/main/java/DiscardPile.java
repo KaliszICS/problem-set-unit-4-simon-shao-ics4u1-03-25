@@ -120,6 +120,7 @@ public class DiscardPile{
      * converts the array of cards in the pile to a string seperated by comma and ends with a period
      * @return returns the string version of the card list
      */
+    @Override
     public String toString(){
         String pileString = "";
         if (this.size() == 0){
