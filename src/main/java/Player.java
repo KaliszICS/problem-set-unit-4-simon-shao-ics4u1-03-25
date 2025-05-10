@@ -63,10 +63,10 @@ public class Player{
         return this.hand.length;
     }
 
-//nothing happens if null is drawn from deck
     /**
      * adds a card from the deck to hand
      * draws from top of card using the deck.draw() method
+     * does not add null card to hand
      */
     public void draw(Deck deck){
 
@@ -90,10 +90,11 @@ public class Player{
         }
     }
 
-//discardCard
+    //discardCard
     /**
      * removes a card from hand and adds it to the discard pile
      * null card can also be removed, but it won't be added to pile
+     * if multiple identical cards exist, the last identical card will be removed
      * @param card the card that is to be removed from hand and added to deck
      * @param discardPile the pile that the card removed from hand is added to
      * @return returns true if card exists in hand, false otherwise
@@ -101,6 +102,7 @@ public class Player{
     public boolean discardCard(Card card, DiscardPile discardPile){
         int handLocation = -1;
         Card[] tempHand = new Card[this.size()];
+        //check if hand has card - card is null so == is used instead of .equals()
         if (card ==null){
             for(int index = 0; index<this.size();index++){
                 if (this.hand[index] == (card)){
@@ -142,11 +144,10 @@ public class Player{
         return true;
     }
 
-//returnCard
-//allows null to leave hand
     /**
      * remove a card from hand and adds it to deck
      * can remove a null card
+     * if multiple identical cards exist, the last identical card will be removed
      * @param card the card that is to be removed from hand and added to deck
      * @param deck the deck to add the card to
      * @return returns true if card exists in hand, false otherwise
@@ -195,10 +196,10 @@ public class Player{
         return true;
     }
 
-//toString
     /**
      * converts the information (name, age, hand) to a single string
-     * will only have (name), (age). if hand is empty
+     * will only have "(name), (age)." if hand is empty
+     * @return returns the string of the player's information. 
      */
     public String toString(){
         //returns just name and age if hand is empty
