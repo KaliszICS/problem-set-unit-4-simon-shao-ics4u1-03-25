@@ -56,7 +56,7 @@ public class Card{
      */
     @Override
     public String toString(){
-        return this.name + " of " + this.suit + " and value of " + this.value ;
+        return this.name + " of " + this.suit;
     }
 
     /**
