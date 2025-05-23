@@ -1,0 +1,8 @@
+K(30%): 100
+I(30%): 96
+C(10%): 100
+A(30%): 98
+98.2%
+Make sure card is not null for equals method.
+Do not need an if statement, can just return the condition
+Could have simplified code a lot by using an Arraylist.
